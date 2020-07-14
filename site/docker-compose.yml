@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  nuxt:
+    build: ./app/
+    container_name: NuxtForce
+    restart: always
+    ports:
+      - "3000:3000"
+    command:
+      "npm run start"
+    env_file: 
+        './app/.env'
+
+  nginx:
+    image: nginx:1.13
+    container_name: NuxtForce-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    depends_on:
+      - nuxt

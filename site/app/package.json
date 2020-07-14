@@ -1,0 +1,33 @@
+{
+  "name": "NuxtForce",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "export": "nuxt export",
+    "serve": "nuxt serve",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "@nuxtjs/auth": "^4.9.1",
+    "@nuxtjs/axios": "^5.11.0",
+    "@nuxtjs/pwa": "^3.0.0-beta.20",
+    "bcryptjs": "^2.4.3",
+    "jsforce": "^1.9.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.23",
+    "nuxt": "^2.13.0",
+    "salesforce-jwt": "^0.1.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/vuetify": "^1.11.2",
+    "@vue/test-utils": "^1.0.3",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^26.0.1",
+    "jest": "^26.0.1",
+    "vue-jest": "^3.0.4"
+  }
+}
