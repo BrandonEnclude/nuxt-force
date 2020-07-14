@@ -66,8 +66,10 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    baseURL: process.env.ENVIRONMENT == 'development' ? 'http://localhost' : process.env.HOST_NAME,
-  },
+    //baseURL: process.env.ENVIRONMENT == 'development' ? 'http://localhost' : process.env.HOST_NAME,
+    baseURL: 'http://nuxt',
+    browserBaseURL: 'http://' + process.env.HOST_NAME, 
+ },
   /*
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module
