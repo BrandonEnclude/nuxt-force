@@ -2,11 +2,16 @@ const router = require('express').Router()
 const User = require('../models/User')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
-const jsforce = require('jsforce')
 const fs = require('fs')
 const {registerValidation, loginValidation} = require('../validation')
+
+const SfConnection = require('../SfConnection')
+const clientId = process.env.SF_CLIENT_ID
 const certPath = __dirname + '/../certificates/'
-const authToken = fs.readFileSync(certPath + 'auth.txt', 'utf-8')
+const privateKey = fs.readFileSync(certPath + 'server.key').toString('utf8')
+const instanceUrl = process.env.SF_INSTANCE_URL
+const sfUser = process.env.SF_USER
+const sf = new SfConnection(clientId, privateKey, instanceUrl, sfUser)
 
 router.post('/register', async (req, res) => {
 
@@ -36,11 +41,7 @@ router.post('/register', async (req, res) => {
       res.status(400).send(err)
    }
    try {
-      const conn = new jsforce.Connection();
-      conn.initialize({
-         instanceUrl: process.env.SF_INSTANCE_URL,
-         accessToken: authToken
-      });
+      const conn = await sf.connect()
       await conn.sobject('Lead').create({ FirstName: savedUser.firstName, LastName : savedUser.lastName, Email: savedUser.email, External_Id__c: savedUser._id, Company: 'NuxtForce' })
       res.status(201).send({id: savedUser._id, firstName: savedUser.firstName, lastName: savedUser.lastName, email: savedUser.email, created: savedUser.created})
    } catch (err) {

@@ -6,7 +6,7 @@ services:
     container_name: NuxtForce
     restart: always
     ports:
-      - "3000:3000"
+      - "3000"
     command:
       "npm run start"
     env_file: 

@@ -20,7 +20,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.23",
     "nuxt": "^2.13.0",
-    "salesforce-jwt": "^0.1.0"
+    "salesforce-jwt-promise": "^0.1.8"
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.11.2",
