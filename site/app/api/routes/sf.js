@@ -54,7 +54,7 @@ router.delete('/Blog_Comment__c/:commentId', async function(req, res) {
    }
    try {
       const conn = await sf.connect()
-      await conn.sobject('Blog_Comment__c').find({ Id: req.params.commentId }).update({ Visibility__c: 'deleted'})
+      await conn.sobject('Blog_Comment__c').find({ Id: req.params.commentId, User__r: {External_Id__c: decoded._id} }).update({ Visibility__c: 'deleted'})
       return res.status(200).send('Ok')
    } catch(err) {
       console.log(err)
