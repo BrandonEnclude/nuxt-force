@@ -37,16 +37,12 @@ class SfConnection {
             }); 
             return conn
         } catch (err) {
-            if (err.name == 'INVALID_SESSION_ID') {
-                const newAccesstoken = await this.refreshAccessToken()
-                conn.initialize({
-                    instanceUrl: this.instanceUrl,
-                    accessToken: newAccesstoken
-                });
-                return conn
-            } else {
-                throw err
-            }
+            const newAccesstoken = await this.refreshAccessToken()
+            conn.initialize({
+                instanceUrl: this.instanceUrl,
+                accessToken: newAccesstoken
+            });
+            return conn
         }
     }
 }
