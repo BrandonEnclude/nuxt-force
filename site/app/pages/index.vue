@@ -28,16 +28,17 @@
             <li>Progressive Web Application implementation</li>
           </ul>
           <p>
-            For more information on NuxtForce, check out this <a
-              href="https://vuetifyjs.com"
+            For more information on NuxtForce, check out this <strong><a
+              href="https://github.com/BrandonEnclude/nuxt-force"
               target="_blank"
               rel="noopener noreferrer"
             >
-              repo
-            </a>.
+              Github Repo
+            </a>
+            </strong>
           </p>
           <p v-if="!$auth.loggedIn">
-            <a href="/login">Log in</a> or <a href="/register">register</a> to see more features of the site.
+            <a href="/login">Log in</a> or <a href="/register">register</a> to leave or delete comments.
           </p>
           <v-card-actions v-if="!$auth.loggedIn">
             <v-spacer />

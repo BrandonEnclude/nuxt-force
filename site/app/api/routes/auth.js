@@ -4,17 +4,9 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const fs = require('fs')
 const {registerValidation, loginValidation} = require('../validation')
-
-const SfConnection = require('../SfConnection')
-const clientId = process.env.SF_CLIENT_ID
-const certPath = __dirname + '/../certificates/'
-const privateKey = fs.readFileSync(certPath + 'server.key').toString('utf8')
-const instanceUrl = process.env.SF_INSTANCE_URL
-const sfUser = process.env.SF_USER
-const sf = new SfConnection(clientId, privateKey, instanceUrl, sfUser)
+const sf = require('../sfConnection')
 
 router.post('/register', async (req, res) => {
-
    // Validate data
    const {error} = registerValidation(req.body)
    if (error) return res.status(400).send(error)

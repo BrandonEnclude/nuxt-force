@@ -1,7 +1,6 @@
 <template>
   <v-app dark>
     <v-navigation-drawer
-      v-if="$auth.loggedIn"
       v-model="drawer"
       :mini-variant="miniVariant"
       :clipped="clipped"
@@ -26,15 +25,15 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app elevate-on-scroll>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" v-if="$auth.loggedIn"/>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title v-text="title" />
       <v-spacer />
       <div v-if="$auth.loggedIn">
-        <span style="margin-right: 5px;">{{ $auth.user.email }}</span>
+        <div class="subtitle-1 d-none d-sm-inline mr-1 text--secondary">{{ $auth.user.email }}</div>
         <v-btn @click="logout">Log out</v-btn>
       </div>
       <div v-else>
-        <v-btn style="margin-right: 5px;" to='/login'>Login</v-btn>
+        <v-btn class="mr-1" to='/login'>Login</v-btn>
         <v-btn color="primary" to='/register'>Register</v-btn>
       </div>
     </v-app-bar>
@@ -67,6 +66,11 @@ export default {
           icon: 'mdi-chart-bubble',
           title: 'Posts',
           to: '/posts',
+        },
+        {
+          icon: 'mdi-cloud',
+          title: 'Salesforce Login',
+          to: '/user-flow',
         },
         
       ],
