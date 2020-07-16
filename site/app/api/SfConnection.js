@@ -2,11 +2,6 @@ const jsforce = require('jsforce')
 const { getJWTToken } = require('salesforce-jwt-promise');
 
 class SfConnection {
-    clientId
-    privateKey
-    accessToken
-    connection
-
     constructor(clientId, privateKey, instanceUrl, user) {
         this.clientId = clientId
         this.privateKey = privateKey
@@ -21,6 +16,8 @@ class SfConnection {
     }
     async refreshAccessToken() {
         const response = await getJWTToken({clientId: this.clientId, privateKey: this.privateKey, userName: this.user})
+        console.log('---refreshAccesstoken---')
+        console.log(response)
         this.accessToken = response.access_token
         return this.accessToken
     }
