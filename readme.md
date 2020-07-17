@@ -1,6 +1,9 @@
 # NuxtForce
 NuxtForce is a demo of Nuxt and Salesforce integration.
+
 [Demo]
+
+To see the code for the Salesforce integration, go to the [API Endpoints]
 
 ## References
 
@@ -49,6 +52,7 @@ cd site
 docker-compose up -d --build
 ```
 [Demo]: <http://www.imugi.io>
+[API Endpoints]: </nuxt-force/tree/master/site/app/api>
 [Docker]: <https://docs.docker.com/get-docker/>
 [Docker Compose]: <https://docs.docker.com/compose/install/>
 [Nodejs]: <https://nodejs.org/en/download/>
