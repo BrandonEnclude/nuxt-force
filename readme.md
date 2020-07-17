@@ -52,7 +52,7 @@ cd site
 docker-compose up -d --build
 ```
 [Demo]: <http://www.imugi.io>
-[API Endpoints]: </nuxt-force/tree/master/site/app/api>
+[API Endpoints]: <https://github.com/BrandonEnclude/nuxt-force/tree/master/site/app/api>
 [Docker]: <https://docs.docker.com/get-docker/>
 [Docker Compose]: <https://docs.docker.com/compose/install/>
 [Nodejs]: <https://nodejs.org/en/download/>
