@@ -13,6 +13,7 @@ router.post('/register', async (req, res) => {
 
    // Check for existing User
    const emailExists = await User.findOne({email: req.body.email})
+   console.log(emailExists)
    if (emailExists) return res.status(400).send({message: `User ${req.body.email} already exists`})
 
    // Hash password
@@ -33,8 +34,8 @@ router.post('/register', async (req, res) => {
       res.status(400).send(err)
    }
    try {
-      const conn = await sf.connect()
-      await conn.sobject('Lead').create({ FirstName: savedUser.firstName, LastName : savedUser.lastName, Email: savedUser.email, External_Id__c: savedUser._id, Company: 'NuxtForce' })
+      const conn = await sf.getConnection()
+      const response = await conn.sobject('Lead').create({ FirstName: savedUser.firstName, LastName : savedUser.lastName, Email: savedUser.email, External_Id__c: savedUser._id, Company: 'NuxtForce' })
       res.status(201).send({id: savedUser._id, firstName: savedUser.firstName, lastName: savedUser.lastName, email: savedUser.email, created: savedUser.created})
    } catch (err) {
       await User.deleteOne({_id: savedUser._id})

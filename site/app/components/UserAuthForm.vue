@@ -35,10 +35,10 @@
         valid: false,
         showPassword: false,
         userInfo: {
-          firstName: 'Billiam',
-          lastName: 'Testington',
-          email: 'test@test.com',
-          password: 'password'
+          firstName: '',
+          lastName: '',
+          email: '',
+          password: ''
         },
         ...validations
       }

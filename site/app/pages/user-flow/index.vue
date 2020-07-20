@@ -24,7 +24,7 @@ export default {
   data: function() {
     return {
       clientId: '3MVG95G8WxiwV5Ptib1Zg_oPWxjMaC6bFnt9sWVt8FVPGY1t9_1NulvI2yIX77Wx9Y5.Ejnyv3SzfWGLl68c8',
-      redirectUri: 'http://www.imugi.io/user-flow/callback'
+      redirectUri: 'http://localhost:3000/user-flow/callback'
     }
   },
   computed: {

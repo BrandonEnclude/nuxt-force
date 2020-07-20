@@ -1,6 +1,7 @@
 const jsforce = require('jsforce')
 const { getJWTToken } = require('salesforce-jwt-promise');
 const fs = require('fs')
+const cron = require('node-cron')
 
 const sfConnection = {
 
@@ -9,6 +10,10 @@ const sfConnection = {
     instanceUrl: process.env.SF_INSTANCE_URL, // Salesforce Instance URL
     userName: process.env.SF_USER, // Salesforce User username
     connection: null,
+
+    testCron: async function() {
+        console.log('Running cron...')
+    },
 
     getAccessToken: async function() {
         // Get JSON Web Token from Salesforce using our credentials
@@ -26,5 +31,9 @@ const sfConnection = {
         return this.connection
     }
 }
+
+cron.schedule('* * */6 * * *', async () => {
+    await sfConnection.getAccessToken();
+}),
 
 module.exports = sfConnection
